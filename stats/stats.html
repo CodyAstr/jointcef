@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stats.css" />
+</head>
+<body>
+	<div id="statsId" class="container" style="display: none;">
+		<img class="image_background" src="stats_fon.png">
+		<div class="nn">
+			<p id="playerName" class="nick">Antonio_Basov</p>
+		</div>
+		<div class="stats">
+			<p id="playerInfo" class="name">
+                <span style="color: #d3d3d3;">ФИО: </span>${fio}<br>
+                <span style="color: #d3d3d3;">Дата рождения: </span>adssdsadasdsad${birth}<br>
+                <span style="color: #d3d3d3;">Место рождения: </span>${pl_birth}<br>
+                <span style="color: #d3d3d3;">Пол: </span>${sex}<br>
+                <span style="color: #d3d3d3;">Номер телефона: </span>${phonenumber}<br>
+                <span style="color: #d3d3d3;">Email: </span>${email}<br>
+                <span style="color: #d3d3d3;">Отыграно часов: </span>${online} ч.<br>
+                <span style="color: #d3d3d3;">Наличные: </span>${cash} руб.<br>
+                <span style="color: #d3d3d3;">Банковский счёт: </span>${bcash} руб.<br>
+                <span style="color: #d3d3d3;">Организация: </span>${bcash}<br>
+                <span style="color: #d3d3d3;">Подразделение: </span>${frac}<br>
+                <span style="color: #d3d3d3;">Должность: </span>${devis}<br>
+                <span style="color: #d3d3d3;">Звание: </span>${dol}<br>
+                <span style="color: #d3d3d3;">Дом: </span>${home}<br>
+                <span style="color: #d3d3d3;">Автомобиль: </span>${car}<br>
+                <span style="color: #d3d3d3;">Предупреждения: </span>${warns} / 3
+                <span style="color: #d3d3d3;">Предупреждения: </span>${warns} / 3
+                <span style="color: #d3d3d3;">Предупреждения: </span>${warns} / 3                
+			</p>
+		</div>
+	</div>
+    <script>
+        let _is_stats = false;
+        window.addEventListener("keyup", (event) => {
+            var code = event.keyCode;
+            var key = String.fromCharCode(event.keyCode);
+            
+            if(event.keyCode === 27) {
+                 if(_is_stats == true) {
+                    _is_stats = false;
+                    document.getElementById("passportId").style = "display: none;";
+                    document.getElementById("militaryId").style = "display: none;";
+                    document.getElementById("licId").style = "display: none;";
+        
+                    document.getElementById("mvd").style = "display: none;";
+                    document.getElementById("fssp").style = "display: none;";
+                    document.getElementById("sud").style = "display: none;";
+                    document.getElementById("sk").style = "display: none;";
+                    document.getElementById("prok").style = "display: none;";
+                    document.getElementById("mchs").style = "display: none;";
+                    document.getElementById("fsb").style = "display: none;";
+                    document.getElementById("fsin").style = "display: none;";
+                    document.getElementById("rosg").style = "display: none;";
+        
+                    document.getElementById("a").style = "display: none;";
+                    document.getElementById("b").style = "display: none;";
+                    document.getElementById("c").style = "display: none;";
+                    document.getElementById("d").style = "display: none;";                
+                    document.getElementById("e").style = "display: none;";   
+                    
+                    document.getElementById("pts").style = "display: none;";                     
+                 }
+            }
+        });           
+        cef.on("show_stat", (nick, fio, birth, pl_birth, sex, phonenumber, email, online, cash, bcash, frac, devis, dol, zvan, home, car, warns, educ) => {
+            _is_stats = true;
+            document.getElementById("statsId").style = "display: flex;";
+            document.getElementById("playerName").innerHTML = `${nick}`;
+            document.getElementById("playerInfo").innerHTML =
+            `
+                <span style="color: #d3d3d3;">ФИО: </span>${fio}<br>
+                <span style="color: #d3d3d3;">Дата рождения: </span>${birth}<br>
+                <span style="color: #d3d3d3;">Место рождения: </span>${pl_birth}<br>
+                <span style="color: #d3d3d3;">Пол: </span>${sex}<br>
+                <span style="color: #d3d3d3;">Номер телефона: </span>${phonenumber}<br>
+                <span style="color: #d3d3d3;">Email: </span>${email}<br>
+                <span style="color: #d3d3d3;">Отыграно часов: </span>${online} ч.<br>
+                <span style="color: #d3d3d3;">Наличные: </span>${cash} руб.<br>
+                <span style="color: #d3d3d3;">Банковский счёт: </span>${bcash} руб.<br>
+                <span style="color: #d3d3d3;">Организация: </span>${frac}<br>
+                <span style="color: #d3d3d3;">Подразделение: </span>${devis}<br>
+                <span style="color: #d3d3d3;">Должность: </span>${dol}<br>
+                <span style="color: #d3d3d3;">Звание: </span>${zvan}<br>
+                <span style="color: #d3d3d3;">Дом: </span>${home}<br>
+                <span style="color: #d3d3d3;">Автомобиль: </span>${car}<br>
+                <span style="color: #d3d3d3;">Предупреждения: </span>${warns} / 3<br>
+                <span style="color: #d3d3d3;">Образование: </span>${educ}
+            `;
+        });
+        cef.on("hide_stat", () => {
+            _is_stats = false;
+            document.getElementById("statsId").style = "display: none;";
+        });
+    </script>
+</body>
+</html>
