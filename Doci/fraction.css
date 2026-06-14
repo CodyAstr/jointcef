@@ -1,0 +1,241 @@
+body {
+    overflow-y: hidden;
+    background: url(http://vadimp05.beget.tech/tVmPpIMWw5qD9T7i/back.png);
+    background-repeat: no-repeat;
+    background-position: cover;    
+}
+
+.fractionBox {
+    font-family: Proxima Nova Sm;
+    background: linear-gradient(to top,#131111dd,#43225edd);
+    width: 750px;
+
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin: 15% auto;
+}
+
+.header {
+    display: inline-flex;
+}
+
+.tables {
+    display: flex;
+}
+
+.fracName {
+    letter-spacing: -0.3px;
+    font-family: Proxima Nova Rg;
+    font-size: 14.5px;
+    margin-top: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 5px;
+}
+
+.fracHeader {
+    font-size: 24px;
+    letter-spacing: -0.3px;
+    color: #fff;
+}
+
+nav {
+    width: 230px;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li {
+    background: #ffffff15;
+    padding: 10px;
+    margin-bottom: 6px;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+}
+
+.rightTable {
+    margin: 15px;
+}
+
+.mainList {
+    width: 550px;
+}
+
+.warnList {
+    width: 550px;
+}
+
+.wageList {
+    width: 550px;
+}
+
+.geoList {
+    width: 550px;
+    height: 340px;
+    overflow-y: auto;
+}
+
+.mainText {
+    color: #fff;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 0px;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.28);
+    /* width: 100%; */
+    border-width: 0.5px;
+}
+
+.active { 
+    color: #000;
+}
+
+.memberHeader {
+    display: flex;
+    margin-left: 0px;
+    justify-content: center;
+}
+
+.member {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.memberItemOnl {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    background-color: rgba(44, 44, 44, 0.064);
+    box-shadow: inset 1px 1px 10px rgba(255, 255, 255, 0.07);
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-right: 25px;
+}
+
+.memberItem {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-right: 25px;
+}
+
+.memberItemListf { 
+    color: #fff;
+    margin-left: 15px;
+    margin-right: 35px;    
+    font-size: 13px;
+}
+
+.memberItemList { 
+    color: #fff;
+    margin-left: 15px;
+    margin-right: 15px;    
+    font-size: 13px;
+}
+
+.membersList {
+    width: 500px;
+    height: 295px;
+    overflow-y: auto;
+}
+
+.geoList::-webkit-scrollbar {
+    width: 6px;               /* ������ scrollbar */
+}
+
+.geoList::-webkit-scrollbar-track {
+    background: rgba(35, 36, 40, 0.93);        /* ���� ������� */
+}
+
+.geoList::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);    /* ���� ������ */
+    border-radius: 20px;       /* ����������� ������ */
+    /* border: 1px solid orange;  padding ������ ������ */
+}
+
+.membersList::-webkit-scrollbar {
+    width: 6px;               /* ������ scrollbar */
+}
+
+.membersList::-webkit-scrollbar-track {
+    background: rgba(35, 36, 40, 0.93);        /* ���� ������� */
+}
+
+.membersList::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);    /* ���� ������ */
+    border-radius: 20px;       /* ����������� ������ */
+    /* border: 1px solid orange;  padding ������ ������ */
+}
+
+.inputWage {
+    width: 80%;
+    margin-top: 10px;
+    padding: 12px;
+    background-color: rgba(44, 44, 44, 0.064);
+    outline: 0;
+    text-align: center;
+    color: #fff;
+    font-family: Proxima Nova Rg;
+    box-shadow: inset 1px 1px 10px rgba(255, 255, 255, 0.07);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.inputWage::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: Proxima Nova Rg;
+}
+
+.giveWage {
+    margin-top: 10px;
+    background-color: #fbad5e;
+    width: 82.5%;
+    font-family: Proxima Nova Rg;
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    padding: 8px;
+}
+
+.giveWarn {
+    font-family: Proxima Nova Rg;
+    margin-top: 7px;
+    font-size: 15px;
+    background-color: #e73727;
+    width: 82%;
+
+    text-align: center;
+    color: #fff;
+
+    padding: 8px;
+}
+
+.red {
+    background-color: #e7372785;
+    transition: 0.2s;
+}
+.red:hover {background-color: #e73727;}
+
+.white { background-color: #fff; color: rgb(20, 20, 20);}
+
+.blue { background-color: #3399ff; }
+
+.orange { background-color: #fbad5e; }
