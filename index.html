@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>Авторизация на сервере</title>
+	<!-- <script src="js/login.js"></script> -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/fonts.css">
+	<script src="js/jquery-latest.js"></script>
+</head>
+<body>
+	<main class="slideRight" id="main">
+		<p class="createText">Вход в аккаунт</p>
+		<p class="secondCreateText">Для игры на сервере необходимо ввести пароль от аккаунта который вы указали при регистрации</p>
+		<input type="text" name="login" class="login" readonly>
+		<div class="inputPass">
+			<input type="password" name="password" class="password1" placeholder="Пароль от аккаунта" required>
+			<img src="images/eye-off.png" id="pass1" class="pass1" alt>
+		</div>
+		<div style="display: flex; justify-content: center;"><a class="go">Войти</a></div>
+		<div style="display: flex; justify-content: center;"><a class="recovery">Восстановить пароль</a></div>
+	</main>
+	<div class="specialMain">
+		<div class="loader">
+		  <div class="spinner"></div>
+		</div>
+		<p style="font-size: 20px;">Пожалуйста, подождите...</p>
+	</div>
+	<script src="js/script.js"></script>
+</body>
+</html>
