@@ -1,0 +1,285 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    color: white;
+    font-family: 'Proxima Nova Rg';
+    font-weight: 500;
+    background: url(../images/background.png) center no-repeat;
+    user-select: none;
+    align-items: center;
+     background-position: cover;
+    animation: 1s all fade-in;
+    overflow: hidden;
+}
+main {
+	width: 26vw;
+	height: 50vh;
+  margin: 0 auto;
+	/* margin-left: 11vw; */
+}
+.createText {
+	font-size: 2.2vw;
+  text-align: center;
+  font-family: Proxima Nova Ex;
+}
+p {
+	margin: 0;
+}
+.secondCreateText {
+
+	font-size: 0.9vw;
+  line-height: 1vw;
+  text-align: center;
+	color: rgba(255, 255, 255, 0.5);
+	margin-bottom: 25px;
+}
+input {
+  font-family: Proxima Nova Sm;
+	outline: 0;
+	box-shadow: 0;
+	border: none;
+	width: 100%;
+	height: 6.3vh;
+	padding: 5px 60px;
+	color: white;
+	font-size: 1vw;
+	margin-bottom: 20px;
+  box-shadow: inset 1px 1px 10px rgba(255, 255, 255, 0.07);
+  background-color: rgba(44, 44, 44, 0.064);
+  border: 1px solid rgba(255, 255, 255, 0.2);  
+}
+input[name="login"] {
+	background: url(../images/avatar.png) 20px no-repeat,  rgba(21, 26, 32, 0.4);
+}
+input[name="password"] {
+	background: url(../images/password.png) 20px no-repeat,  rgba(21, 26, 32, 0.4);
+}
+
+.inputPass {
+	display: flex;
+	position: relative;
+	align-items: center;
+}
+span, img {
+	position: absolute;
+	right: 20px;
+	margin-bottom: 20px;
+}
+.go {
+  background: #3461dd;
+	padding: 1.5vh 11.6vw;
+	margin-top: 20px;
+	font-size: 20px;
+
+	transition: .2s;
+}
+.go:hover {
+  letter-spacing: 0.9px;
+	/* transform: scale(1.03); */
+}
+.recovery {
+  background-color: rgba(255, 255, 255, 0.07);
+  width: 100%;
+	padding: 1.5vh;
+  text-align: center;
+	margin-top: 20px;
+	font-size: 14px;
+	transition: .2s;
+}
+.recovery:hover {
+  background-color: #fff;
+  color: #1d1d1d;
+  letter-spacing: 0.9px;
+	/* transform: scale(1.03); */
+}
+a {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+a:hover {
+	color: white;
+}
+.slideRight{
+    animation-name: slideRight;
+    animation-duration: 1s; 
+    animation-timing-function: ease-in-out; 
+    visibility: visible !important; 
+}
+ 
+@keyframes slideRight {
+    0% {
+        transform: translateY(-150%);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+.slideBack{
+    animation-name: slideBack;
+    animation-duration: 1s; 
+    animation-timing-function: ease-out; 
+    visibility: visible !important; 
+}
+ 
+@keyframes slideBack {
+    0% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(150%);
+        opacity: 0;
+    }
+}
+.slideLeft{
+    animation-name: slideLeft;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-in-out; 
+    visibility: visible !important; 
+}
+ 
+@keyframes slideLeft {
+    0% {
+        transform: translateY(50%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
+}
+ 
+@keyframes fadeIn {
+    0% {
+        opacity: 0.0;       
+    }
+    100% {
+        opacity: 1.0;
+    } 
+}
+.slideRightBack{
+    animation-name: slideRightBack;
+    animation-duration: 1.5s; 
+    animation-timing-function: ease-in-out; 
+    visibility: visible !important; 
+}
+ 
+@keyframes slideRightBack {
+    0% {
+        transform: translateY(0%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+.error {
+	border: 1px solid red;
+}
+
+.loader {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  perspective: 800px;
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;  
+}
+
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 3px solid #EFEFFA;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 3px solid #EFEFFA;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 3px solid #EFEFFA;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+@keyframes fadeIn{
+  from{opacity: 0;}
+  to{opacity: 1;}
+}
+@keyframes fadeOut{
+  from{opacity: 1;}
+  to{opacity: 0;}
+}
+.specialMain {
+  /* background-image: linear-gradient(-105deg, #009acc, #363795); */
+	width: 100vw;
+	height: 100vh;	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	flex-direction: column;
+	display: none;
+}
+
+.spinner {
+  height: 50px;
+  width: 50px;
+  border-left: 3px solid #fff;
+  border-bottom: 3px solid #fff;
+  border-right: 3px solid #fff;
+  border-top: 3px solid rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+  from {
+      transform: rotate(0deg);
+  }
+
+  to {
+      transform: rotate(360deg);
+  }
+}
