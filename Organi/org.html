@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="org.css">
+    <script src="org.js"></script>
+</head>
+<body>
+    <div id="fractionMenu" class="fractionBox" style="display: none;">
+        <div class="header">
+            <div class="fracHeader">Управление организацией</div>
+            <div id="fracName" class="fracName">Министерство Обороны</div>
+        </div>
+        <div class="tables">
+            <div class="leftTable">
+                <nav class="menu">
+                    <ul class="list">
+                        <li onclick="showGiveRang();" style="color: #000; background: #fff;">Выдать должность</li>
+                        <li onclick="showMembersOnline();">Список сотрудников</li>                    
+                        <li onclick="showCars();">Техника организации</li>
+                        <li onclick="showInvite();">Принять / уволить сотрудника</li>
+                        <li onclick="playerInfo();">Информация о сотруднике</li>
+
+                        <li onclick="fracclose();" style="background: #f04245;">Закрыть меню</li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="rightTable">
+                <div id="mainList" class="mainList" style="display: block;">
+                    <div style="width: 450px; line-height: 13px; font-size: 13px; color: #999">
+                        Чтобы выдать должность или звание, введите ID сотрудника и параметр
+                        затем нажмите соответствующую кнопку.
+                        Должность и звание: 35 символов
+                        Ранг: от 1 до 4
+                    </div>
+                    <input id="idWarn" type="text" class="inputWage" placeholder="Введите ID сотрудника">
+                    <input id="warnReason" type="text" class="inputWage" placeholder="Введите должность / ранг">
+
+                    <div onclick="givePost();" class="giveWarn blue">Выдать должность</div>
+                    <div onclick="giveRang();" class="giveWarn orange">Выдать ранг</div>
+                </div>
+                <div id="membersListOnline" class="membersList" style="display: none;">
+                    <div class="memberItem">
+                        <span class="memberItemListf">Статус</span>
+                        <span class="memberItemListf">Имя Фамилия</span>
+                        <span class="memberItemListf">Должность</span>
+                        <span class="memberItemListf">Звание</span>
+                    </div>           
+                </div>                
+                <div id="carList" class="carList" style="display: none;">Not car.</div>
+                <div id="wageList" class="wageList" style="display: none;">
+                    <div style="line-height: 13px; font-size: 13px; color: #999">
+                        Чтобы принять / уволить сотрудника введите его ID
+                    </div>
+                    <input id="uvalId" type="text" class="inputWage" placeholder="Введите ID игрока">
+
+                    <div onclick="invite();" class="giveWarn white">Принять сотрудника</div>
+                    <div onclick="uninvite();" class="giveWarn">Уволить сотрудника</div>
+                </div>
+                <div id="geoList" class="geoList" style="display: none;">
+                    <div style="line-height: 13px; font-size: 13px; color: #999">
+                        Чтобы узнать информацию о сотруднике, введите его имя
+                    </div>
+                    <input id="searchId" type="text" class="inputWage" placeholder="Введите имя">
+
+                    <div onclick="searchInfo();" class="giveWage">Получить информацию</div>                                                                                                                                                                     
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

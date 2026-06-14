@@ -1,0 +1,253 @@
+@font-face {
+	font-family: "Gilroy-Bold"; 
+
+	src: url("Gilroy-Medium.ttf") format("truetype"); 
+	font-style: normal; 
+	font-weight: normal; 
+} 
+
+body {
+    overflow-y: hidden;
+    font-family: "Gilroy-Bold";
+}
+
+.fractionBox {
+    background: rgba(35, 36, 40, 0.93);
+    width: 750px;
+
+    padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    margin: 15% auto;
+
+    min-height: 370px;
+}
+
+.close {
+    margin-left: 155px;
+    margin-top: 0px;
+    text-align: center;
+    color: #fff;
+    width: 80px;
+    background-color: #f04245;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.header {
+    display: inline-flex;
+}
+
+.tables {
+    display: flex;
+}
+
+.fracName {
+    font-size: 14.5px;
+    margin-top: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-left: 5px;
+}
+
+.fracHeader {
+    font-size: 24px;
+    font-weight: 500;
+    color: #fbad5e;
+}
+
+nav {
+    width: 230px;
+}
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+li {
+    background: #ffffff15;
+    border-radius: 11px;
+    padding: 10px;
+    margin-bottom: 6px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.rightTable {
+    margin: 15px;
+}
+
+.mainList {
+    width: 550px;
+}
+
+.warnList {
+    width: 550px;
+}
+
+.wageList {
+    width: 550px;
+}
+
+.geoList {
+    width: 550px;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.mainText {
+    color: #fff;
+    font-weight: 500;
+    font-size: 17px;
+    margin-bottom: 0px;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.28);
+    /* width: 100%; */
+    border-width: 0.5px;
+}
+
+.active { 
+    color: #000;
+}
+
+.memberHeader {
+    display: flex;
+    margin-left: 0px;
+    justify-content: center;
+}
+
+.member {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.5);
+    /* margin-right: 35px; */
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.memberItemOnl {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px rgba(255, 255, 255, 0.1) solid;
+    margin-right: 25px;
+}
+
+.memberItem {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    /* background: rgba(255, 255, 255, 0.1); */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px rgba(255, 255, 255, 0.1) solid;
+    margin-right: 25px;
+}
+
+.memberItemListf { 
+    color: #fff;
+    margin-left: 15px;
+    margin-right: 35px;    
+    font-size: 13px;
+}
+
+.memberItemList { 
+    color: #fff;
+    margin-left: 15px;
+    margin-right: 15px;    
+    font-size: 13px;
+}
+
+.membersList {
+    width: 500px;
+    height: 350px;
+    overflow-y: auto;
+}
+
+.geoList::-webkit-scrollbar {
+    width: 6px;               /* ������ scrollbar */
+}
+
+.geoList::-webkit-scrollbar-track {
+    background: rgba(35, 36, 40, 0.93);        /* ���� ������� */
+}
+
+.geoList::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);    /* ���� ������ */
+    border-radius: 20px;       /* ����������� ������ */
+    /* border: 1px solid orange;  padding ������ ������ */
+}
+
+.membersList::-webkit-scrollbar {
+    width: 6px;               /* ������ scrollbar */
+}
+
+.membersList::-webkit-scrollbar-track {
+    background: rgba(35, 36, 40, 0.93);        /* ���� ������� */
+}
+
+.membersList::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);    /* ���� ������ */
+    border-radius: 20px;       /* ����������� ������ */
+    /* border: 1px solid orange;  padding ������ ������ */
+}
+
+.inputWage {
+    width: 80%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: 0;
+    text-align: center;
+    color: #fff;
+    font-family: "Gilroy-Bold";
+    border: 1px rgba(255, 255, 255, 0.1) solid;
+}
+
+.inputWage::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Gilroy-Bold";
+}
+
+.giveWage {
+    margin-top: 10px;
+    background-color: #fbad5e;
+    width: 82.5%;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+
+    padding: 8px;
+}
+
+.giveWarn {
+    margin-top: 10px;
+    background-color: #ff4245;
+    width: 82%;
+    border-radius: 10px;
+    text-align: center;
+    color: #fff;
+
+    padding: 8px;
+}
+
+.white { background-color: #fff; color: rgb(20, 20, 20);}
+
+.blue { background-color: #3399ff; }
+
+.orange { background-color: #fbad5e; }
