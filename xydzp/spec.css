@@ -1,0 +1,153 @@
+body {
+    overflow-y: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+.spec_left {
+    font-family: 'Proxima Nova Sm';    
+    background: linear-gradient(to top,#131111dd,#43225edd);
+    width: 300px;
+    padding: 10px 20px;
+
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+    bottom: 30%;   
+    
+    user-select: none;
+}
+
+.select {
+    font-size: 13.8px;
+    color: rgb(23, 23, 23);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+
+    margin-top: 4px;
+    padding: 8px;
+    transition: .2s;
+}
+
+.select:hover {
+    background-color: rgba(255, 255, 255, 1.0);
+    letter-spacing: 1px;
+}
+
+.spec_right {
+    font-family: 'Proxima Nova Sm';
+    background: linear-gradient(to top left,#131111dd,#43225edd);
+    width: 340px;
+    padding: 15px 20px;
+
+    position: absolute;
+    right: 0;
+    margin-right: 15px;
+    bottom: 30%;
+}
+
+.plName {
+    font-family: Proxima Nova Ex;
+    letter-spacing: 0px;
+    color: #8aa9fd;
+    font-size: 17px;
+    text-align: center;
+    margin-bottom: 7px;
+}
+
+.boxContent {
+    font-size: 13.8px;
+    color: #fff;
+
+    display: flex;
+    margin-top: 4px;
+    padding: 6px;
+    letter-spacing: -0.1px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 1px 1px 10px rgba(255, 255, 255, 0.07);
+}
+
+.rightBox { 
+    position: absolute;
+    right: 28px;
+}
+
+.leftBox {
+    color: rgba(255, 255, 255, 0.55);
+    user-select: none;
+}
+
+.columns {
+    display: flex;
+}
+
+.grey {
+    background-color: #ff9945dd;
+    color: #fff;
+}
+.grey:hover{background-color: #ff9945;}
+
+.modalDialog {
+    margin: 23% auto;
+    background: linear-gradient(to top left, #2A3A33DD, #626064DD);
+    width: 250px;
+    padding: 15px;
+}
+
+.inputModal {
+    background: rgba(37, 37, 37, 0.4);
+	margin-bottom: 10px;
+	padding: 5px;
+	letter-spacing: -0.3px;
+    width: 95%;
+	border: 1px solid rgba(153, 153, 153, 0.692);
+    font-family: "Gilroy-Bold"; 
+    outline: 0;
+    color: #9e9b9b;
+    font-size: 13px;
+}
+
+.modalHeader {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #ffcc00;
+}
+
+.inputModal::placeholder {
+    font-family: "Gilroy-Bold"; 
+    color: #9e9b9b;
+}
+
+.buttons {
+    display: flex;
+}
+
+.btn {
+    padding: 5px;
+    font-size: 12px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    width: 150px;
+    text-align: center;
+}
+
+.red {
+    background-color: #e7372785;
+    color: #fff;
+}
+.red:hover {
+    background-color: #e73727;
+}
+
+#info_click {
+    position: absolute;
+    color: #fff;
+    font-family: Proxima Nova Rg;
+    width: 320px;
+    bottom: 24.5%;
+    left: 0%;
+}

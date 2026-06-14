@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/hud.css" />
+    <link rel="stylesheet" href="fonts.css">
+	<link rel="stylesheet" href="css/index.css">
+	
+    <link rel="stylesheet" href="spec.css">
+
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="fuel.css">
+    <link rel="stylesheet" href="clothes.css">
+
+    <!--<script src="js/menu.js"></script>-->
+</head>
+
+<body>
+    <div id="hud" style="display: none;">
+        <div class="hud">
+            <div class="serverInfo">
+                <div class="serverName">152 REGION PROJECT</div>
+                <div class="serverList">бета-тест</div>
+            </div>
+            <div id="visible_content_hud" style="display: block;">
+                <div class="hud_components">
+                    <div id="weapon" class="fist">
+                        <span id="ammoValue" class="ammo" style="display: none;">1222 пт</span>   
+                    </div>                       
+                </div>                
+                <div class="values_component">
+                    <div class="progress-bar">
+                        <progress id="hp_progress" value="10" max="100"></progress>
+                        <img class="img" width="17px" src="img/health.png" alt="">
+                    </div>   
+                    <div class="progress-bar">
+                        <progress id="armour_progress" value="23" max="100"></progress>
+                        <img class="img" width="17px" src="img/armour.png" alt="">
+                    </div>    
+                    <div class="needs-block">
+                        <div class="progress-bar">
+                            <img class="img" width="15px" style="margin-right: 12px;" src="img/eat.png" alt="">
+                            <progress id="need_progress" value="77" max="100"></progress>
+                        </div>     
+                        <div class="progress-bar">
+                            <img class="img" width="9px" style="margin-right: 12px;" src="img/water.png" alt="">
+                            <progress id="water_progress" value="77" max="100"></progress>
+                        </div>   
+                    </div>                                                                              
+                </div>
+                <div class="blockMoney">
+                    <div class="cashBlock">
+                        <div id="money" class="cashValue">1 000 000</div>
+                        <div class="cashImg"></div>
+                    </div>
+                </div>
+                <div class="blockMoney">
+                    <div class="bankBlock">
+                        <div id="bank" class="cashValue">1 000 000</div>
+                        <div class="cashImg bankImg"></div>
+                    </div>
+                </div>                     
+            </div>
+        </div>
+    </div>
+	
+    <div id="spedometr" style="display: none;" class="car-hud animateOpacityOn">
+        <div class="speed-info">
+            <div class="info">
+                <p id="speedValue">140</p>
+                <p>км/ч</p>
+            </div>
+            <div class="info-car">
+
+                <div class="bulb">
+                    <svg class="active" width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                        <path id="icon1" d="M16.5589 3.7832C10.3471 3.7832 0.492188 6.80296 0.492188 14.9063C0.492188 18.6612 2.58116 21.713 6.53356 23.7313C9.35141 25.1702 13.0983 26.0293 16.5589 26.0293C16.8866 26.0293 17.201 25.8991 17.4328 25.6673C17.6645 25.4356 17.7948 25.1212 17.7948 24.7934V5.0191C17.7948 4.69132 17.6645 4.37696 17.4328 4.14519C17.201 3.91341 16.8866 3.7832 16.5589 3.7832Z" fill="white" />
+                        <path d="M20.2676 3.7832H30.1547V6.25501H20.2676V3.7832Z" fill="white" fill-opacity="0.51"/>
+                        <path d="M20.2676 13.6699H30.1547V16.1417H20.2676V13.6699Z" fill="white" fill-opacity="0.51"/>
+                        <path d="M20.2676 23.5566H30.1547V26.0285H20.2676V23.5566Z" fill="white" fill-opacity="0.51"/>
+                        <path d="M20.2676 18.6133H30.1547V21.0851H20.2676V18.6133Z" fill="white" fill-opacity="0.51"/>
+                        <path d="M20.2676 8.72656H30.1547V11.1983H20.2676V8.72656Z" fill="white" fill-opacity="0.51"/>
+                        </g>
+                        <defs>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="bulb">
+                    <svg class="active"  width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0)">
+                        <path id="icon2" d="M27.747 2.86955C24.0198 -0.857598 17.9556 -0.85754 14.2284 2.86961C11.6826 5.41546 10.7983 9.16723 11.9006 12.5711L1.13547 23.3363C0.972509 23.4992 0.880859 23.7198 0.880859 23.9507V28.8667C0.880859 29.3471 1.26953 29.7357 1.74985 29.7357H6.6659C6.89671 29.7357 7.11737 29.6441 7.28028 29.4811L8.50909 28.2514C8.69662 28.0639 8.78827 27.8008 8.75773 27.5369L8.60497 26.2164L10.4346 26.0442C10.8504 26.0051 11.1789 25.6767 11.2179 25.2608L11.3902 23.4312L12.7107 23.5848C12.9559 23.6179 13.2029 23.5356 13.3887 23.371C13.5737 23.2055 13.6798 22.9696 13.6798 22.7218V21.1038H15.2684C15.4992 21.1038 15.7199 21.0121 15.8828 20.8492L18.1113 18.6502C21.5142 19.7534 25.2011 18.9357 27.747 16.3881C31.4741 12.661 31.4741 6.59671 27.747 2.86955ZM25.2886 9.01446C24.2719 10.0311 22.6188 10.0311 21.6022 9.01446C20.5855 7.99781 20.5855 6.3447 21.6022 5.32804C22.6188 4.31138 24.2719 4.31138 25.2886 5.32804C26.3053 6.3447 26.3052 7.99781 25.2886 9.01446Z" fill="#3399ff" />
+                        </g>
+                        <defs>
+                        <clipPath id="clip0">
+                        <rect width="29.6615" height="29.6615" fill="white" transform="translate(0.876953 0.0761719)"/>
+                        </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="bulb" style="margin-left: 0px;">
+                    <svg class="active" xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none">
+                        <path id="icon3" fill-rule="evenodd" clip-rule="evenodd" d="M15.0004 12C14.4479 12 14 12.448 14 13V28H51.4926C50.9244 26.9215 50.0309 25.6619 48.8657 24.3088C47.2164 22.3935 45.095 20.3734 42.7885 18.5314C40.4812 16.6889 38.011 15.0425 35.6699 13.8616C33.3076 12.67 31.1696 12 29.5 12H15.0004ZM52.2771 30H13C12.8683 30 12.7753 30.0076 12.7103 30.018C12.6859 30.0219 12.6672 30.0259 12.6533 30.0294C12.6207 30.1048 12.5741 30.2712 12.5426 30.6109C12.5107 30.9556 12.5 31.4038 12.5 32V52.5H52.2035C52.7314 50.0834 53.3077 46.3966 53.4885 42.3924C53.6787 38.1812 53.4271 33.703 52.2771 30ZM53.9503 28.6881C53.4258 26.9895 52.0953 24.9943 50.3812 23.0037C48.6399 20.9815 46.4258 18.8766 44.0365 16.9686C41.648 15.0611 39.0619 13.3325 36.5707 12.0759C34.1007 10.83 31.6304 10 29.5 10H15.0004C13.3438 10 12 11.3429 12 13V28.1381C11.9272 28.1623 11.8551 28.1905 11.7841 28.2233C11.3442 28.4263 11.0362 28.7617 10.8425 29.1799C10.6668 29.5594 10.5912 29.9935 10.5511 30.4266C10.5101 30.8694 10.5 31.3962 10.5 32V54.5H53.7873L53.9721 53.7346C54.5698 51.2585 55.2793 47.0701 55.4865 42.4826C55.6927 37.9161 55.4061 32.86 53.9503 28.6881Z" fill="black"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M50.8011 48.5909C50.6944 49.1682 50.5849 49.6825 50.4805 50.1169L50.3884 50.5H23V49.5H49.5968C49.6695 49.1731 49.7441 48.8075 49.8178 48.4091L50.8011 48.5909Z" fill="black"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5 34.5C16.9477 34.5 16.5 34.9477 16.5 35.5C16.5 36.0523 16.9477 36.5 17.5 36.5H23.5C24.0523 36.5 24.5 36.0523 24.5 35.5C24.5 34.9477 24.0523 34.5 23.5 34.5H17.5ZM15.5 35.5C15.5 34.3954 16.3954 33.5 17.5 33.5H23.5C24.6046 33.5 25.5 34.3954 25.5 35.5C25.5 36.6046 24.6046 37.5 23.5 37.5H17.5C16.3954 37.5 15.5 36.6046 15.5 35.5Z" fill="black"/>
+                        </svg>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Двигатель -->
+        <svg class="engine" width="100" height="316" viewBox="0 0 100 316" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+        </svg>
+        
+
+        <!-- Иконка двигателя -->
+        <svg class="engine-icon" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+ 
+        </svg>
+            
+            <!-- Скорость -->
+        <svg class="speed" width="420" height="420" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <path opacity="0.4" d="M122.002 344C41.5 288.5 26.5005 183.5 82.3414 107.535C151.501 28.4998 266.501 28.9991 327.953 100.876C394.014 178.144 373.501 291.499 297.001 340.999" stroke="black" stroke-opacity="0.25" stroke-width="93.06"/>
+            <path id="etoSpeed" style="stroke-dasharray: 838;stroke-dashoffset: -1208;" stroke="url(#paint222_linear)" d="M122.002 344C41.5 288.5 26.5005 183.5 82.3414 107.535C151.501 28.4998 266.501 28.9991 327.953 100.876C394.014 178.144 373.501 291.499 297.001 340.999" stroke-width="93.06"/>
+            
+            <linearGradient id="paint222_linear" x1="209.854" y1="47.7691" x2="229.854" y2="340.677" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#6699ffff"/>
+                <stop offset="1" stop-color="#3399ffaf" stop-opacity="0"/>
+            </linearGradient>
+
+            <path d="M77.3182 347.31C76.7578 346.77 76.2008 346.226 75.6471 345.679L84.2736 336.948C84.7917 337.46 85.3129 337.969 85.8373 338.475L77.3182 347.31Z" fill="#66ccffaa"/>
+            <path d="M60.1608 328.395C59.6775 327.784 59.198 327.171 58.7223 326.555L64.9594 321.739C65.4155 322.33 65.8752 322.917 66.3385 323.502L60.1608 328.395Z" fill="white"/>
+            <path d="M45.984 307.867C45.5844 307.199 45.189 306.529 44.7976 305.856L51.6094 301.894C51.9846 302.539 52.3637 303.182 52.7468 303.822L45.984 307.867Z" fill="white"/>
+            <path d="M34.4071 285.21C34.0999 284.494 33.7971 283.777 33.4987 283.058L40.7767 280.037C41.0629 280.726 41.3532 281.414 41.6477 282.1L34.4071 285.21Z" fill="white"/>
+            <path d="M25.9819 261.344C25.772 260.594 25.5667 259.843 25.366 259.091L37.2286 255.925C37.4164 256.629 37.6085 257.332 37.8049 258.033L25.9819 261.344Z" fill="#66ccffaa"/>
+            <path d="M20.7809 236.53C20.6722 235.759 20.5681 234.987 20.4688 234.215L28.2846 233.21C28.3799 233.95 28.4796 234.69 28.5839 235.429L20.7809 236.53Z" fill="white"/>
+            <path d="M18.9176 211.751C18.9099 210.973 18.9069 210.194 18.9087 209.416L26.7889 209.434C26.7872 210.18 26.7901 210.926 26.7975 211.673L18.9176 211.751Z" fill="white"/>
+            <path d="M20.3859 186.143C20.4825 185.371 20.5839 184.599 20.69 183.828L28.4967 184.902C28.395 185.641 28.2978 186.381 28.2051 187.122L20.3859 186.143Z" fill="white"/>
+            <path d="M25.137 161.479C25.3342 160.726 25.536 159.975 25.7424 159.224L37.5808 162.479C37.3877 163.182 37.1989 163.885 37.0144 164.59L25.137 161.479Z" fill="#66ccffaa"/>
+            <path d="M33.0503 137.736C33.3443 137.015 33.6427 136.296 33.9455 135.579L41.2051 138.644C40.9148 139.332 40.6287 140.021 40.3469 140.712L33.0503 137.736Z" fill="white"/>
+            <path d="M44.3638 114.598C44.7521 113.924 45.1446 113.252 45.5411 112.582L52.3222 116.596C51.942 117.238 51.5658 117.883 51.1935 118.529L44.3638 114.598Z" fill="white"/>
+            <path d="M58.3623 93.6173C58.8362 92.9997 59.3138 92.385 59.7952 91.7733L65.988 96.6463C65.5265 97.2328 65.0686 97.8221 64.6143 98.4142L58.3623 93.6173Z" fill="white"/>
+            <path d="M75.1981 74.471C75.75 73.922 76.3053 73.3765 76.8638 72.8343L85.4151 81.6446C84.8925 82.1519 84.3729 82.6623 83.8565 83.176L75.1981 74.471Z" fill="#66ccffaa"/>
+            <path d="M93.815 58.2104C94.4332 57.7373 95.0543 57.268 95.6782 56.8026L100.39 63.1188C99.792 63.5651 99.1966 64.015 98.6039 64.4685L93.815 58.2104Z" fill="white"/>
+            <path d="M115.141 44.0518C115.817 43.6657 116.495 43.2837 117.176 42.9059L121.001 49.7956C120.348 50.1579 119.698 50.5241 119.05 50.8943L115.141 44.0518Z" fill="white"/>
+            <path d="M137.398 33.1875C138.118 32.8921 138.84 32.6011 139.564 32.3146L142.465 39.6414C141.771 39.9162 141.079 40.1951 140.388 40.4783L137.398 33.1875Z" fill="white"/>
+            <path d="M161.64 25.0935C162.394 24.8969 163.148 24.705 163.904 24.5177L166.858 36.4347C166.151 36.61 165.445 36.7896 164.741 36.9735L161.64 25.0935Z" fill="#66ccffaa"/>
+            <path d="M185.804 20.4269C186.576 20.3289 187.349 20.2356 188.122 20.147L189.019 27.976C188.278 28.0609 187.537 28.1504 186.796 28.2444L185.804 20.4269Z" fill="white"/>
+            <path d="M209.854 18.9063C210.633 18.9063 211.411 18.911 212.19 18.9205L212.093 26.8002C211.347 26.791 210.601 26.7865 209.854 26.7865L209.854 18.9063Z" fill="white"/>
+            <path d="M236.105 20.7192C236.876 20.8263 237.646 20.938 238.416 21.0544L237.237 28.846C236.499 28.7344 235.761 28.6272 235.021 28.5246L236.105 20.7192Z" fill="white"/>
+            <path d="M260.617 25.7774C261.367 25.9843 262.116 26.1959 262.864 26.412L259.456 38.2072C258.756 38.005 258.055 37.8071 257.353 37.6134L260.617 25.7774Z" fill="#66ccffaa"/>
+            <path d="M283.865 33.8329C284.583 34.1347 285.298 34.4408 286.012 34.7512L282.869 41.9775C282.185 41.6799 281.499 41.3864 280.811 41.0971L283.865 33.8329Z" fill="white"/>
+            <path d="M306.577 45.2162C307.249 45.6105 307.917 46.0089 308.584 46.4114L304.509 53.1565C303.87 52.7706 303.229 52.3886 302.586 52.0106L306.577 45.2162Z" fill="white"/>
+            <path d="M326.941 59.0177C327.556 59.4951 328.168 59.9761 328.777 60.4609L323.869 66.6262C323.285 66.1614 322.699 65.7002 322.109 65.2426L326.941 59.0177Z" fill="white"/>
+            <path d="M345.801 75.7664C346.347 76.3206 346.89 76.8781 347.43 77.439L338.584 85.9532C338.079 85.4284 337.571 84.9067 337.059 84.3881L345.801 75.7664Z" fill="#66ccffaa"/>
+            <path d="M361.942 94.398C362.413 95.018 362.88 95.6409 363.343 96.2666L357.008 100.954C356.564 100.354 356.117 99.7571 355.666 99.1627L361.942 94.398Z" fill="white"/>
+            <path d="M375.785 115.368C376.171 116.044 376.552 116.723 376.929 117.404L370.034 121.22C369.672 120.567 369.307 119.916 368.938 119.267L375.785 115.368Z" fill="white"/>
+            <path d="M386.683 137.797C386.977 138.518 387.266 139.241 387.551 139.965L380.218 142.849C379.945 142.155 379.667 141.462 379.386 140.771L386.683 137.797Z" fill="white"/>
+            <path d="M386.683 137.797C386.977 138.518 387.266 139.241 387.551 139.965L380.218 142.849C379.945 142.155 379.667 141.462 379.386 140.771L386.683 137.797Z" fill="white"/>
+            <path d="M394.513 161.255C394.711 162.008 394.904 162.762 395.093 163.517L383.182 166.497C383.006 165.79 382.825 165.084 382.639 164.38L394.513 161.255Z" fill="#66ccffaa"/>
+            <path d="M399.29 185.885C399.388 186.657 399.481 187.43 399.569 188.203L391.74 189.097C391.655 188.355 391.566 187.614 391.472 186.874L399.29 185.885Z" fill="white"/>
+            <path d="M400.8 209.852C400.8 210.631 400.796 211.409 400.786 212.188L392.907 212.091C392.916 211.345 392.92 210.599 392.92 209.852H400.8Z" fill="white"/>
+            <path d="M399.169 234.758C399.068 235.529 398.962 236.301 398.851 237.071L391.051 235.948C391.157 235.209 391.259 234.47 391.356 233.73L399.169 234.758Z" fill="white"/>
+            <path d="M394.227 259.523C394.024 260.275 393.817 261.025 393.606 261.774L381.79 258.436C381.989 257.735 382.182 257.033 382.372 256.329L394.227 259.523Z" fill="#66ccffaa"/>
+            <path d="M386.297 282.848C386 283.567 385.698 284.285 385.391 285L378.147 281.899C378.441 281.213 378.73 280.525 379.016 279.835L386.297 282.848Z" fill="white"/>
+            <path d="M375.332 305.128C374.944 305.802 374.552 306.475 374.155 307.144L367.374 303.129C367.755 302.487 368.131 301.843 368.503 301.196L375.332 305.128Z" fill="white"/>
+            <path d="M361.575 325.789C361.102 326.407 360.626 327.023 360.146 327.636L353.943 322.775C354.404 322.188 354.86 321.597 355.314 321.004L361.575 325.789Z" fill="white"/>
+            <path d="M345.675 344.065C345.128 344.619 344.577 345.169 344.024 345.716L335.396 336.98C335.915 336.469 336.43 335.954 336.942 335.436L345.675 344.065Z" fill="#66ccffaa"/>
+            <path d="M94.2068 384.524C56.6431 359.653 28.0979 323.336 12.8062 280.96C-2.4855 238.584 -3.70883 192.407 9.31771 149.281C22.3442 106.154 48.9266 68.3765 85.1207 41.5521C121.315 14.7276 165.192 0.28584 210.243 0.369502C255.293 0.453163 299.117 15.0578 335.211 42.0165C371.305 68.9752 397.747 106.852 410.613 150.026C423.48 193.2 422.085 239.372 406.636 281.691C391.187 324.01 362.507 360.221 324.851 384.952L321.673 380.113C358.288 356.066 386.176 320.855 401.198 279.706C416.22 238.556 417.576 193.66 405.065 151.679C392.555 109.698 366.843 72.8684 331.747 46.6548C296.65 20.4411 254.038 6.24007 210.232 6.15872C166.426 6.07737 123.762 20.12 88.5677 46.2032C53.3739 72.2863 27.5262 109.02 14.8596 150.955C2.1931 192.889 3.38262 237.79 18.2517 278.995C33.1208 320.2 60.8772 355.513 97.4027 379.697L94.2068 384.524Z" fill="url(#paint0_linear)"/>
+            
+            <defs>
+            <linearGradient id="paint0_linear" x1="209.854" y1="0.369141" x2="209.854" y2="419.338" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3399ffaf"/>
+            <stop offset="1" stop-color="#3399ffaf" stop-opacity="0"/>
+            </linearGradient>
+            </defs>
+
+            </svg>
+
+            <!-- Бензин -->
+            <svg class="fuel" width="100" height="316" viewBox="0 0 100 316" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M41.8301 312C17.8305 276.5 -4.2306 204.241 13.3311 134C24.832 88 51.8336 39 95.832 5" stroke="black" stroke-opacity="0.25" stroke-width="12.06"/>
+                <path id="etoFuel" style="stroke-dasharray: 340;stroke-dashoffset: 340;" stroke="#fff" d="M41.8301 312C17.8305 276.5 -4.2306 204.241 13.3311 134C24.832 88 51.8336 39 95.832 5" stroke-width="12.06"/>
+            </svg>
+
+            <!-- Иконка бензина -->
+            <svg class="fuel-icon" width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10.3633 11.6831L10.9433 12.3045L12.5213 10.7701L11.9393 10.1465L10.3633 11.6831Z" fill="white"/>
+                <path d="M21.3391 21.0469H18.877V23.509H21.3391V21.0469Z" fill="white"/>
+                <path d="M11.9728 8.69823L10.8703 7.5957L8.00391 10.3906L9.10643 11.4931L11.9728 8.69823Z" fill="white"/>
+                <path d="M23.9456 18.4395H16.2695V26.1155H23.9456V18.4395ZM22.3525 24.0155C22.3525 24.1499 22.2991 24.2788 22.204 24.3739C22.1089 24.469 21.98 24.5224 21.8456 24.5224H18.3696C18.2351 24.5224 18.1062 24.469 18.0112 24.3739C17.9161 24.2788 17.8627 24.1499 17.8627 24.0155V20.5395C17.8627 20.4051 17.9161 20.2761 18.0112 20.1811C18.1062 20.086 18.2351 20.0326 18.3696 20.0326H21.8456C21.98 20.0326 22.1089 20.086 22.204 20.1811C22.2991 20.2761 22.3525 20.4051 22.3525 20.5395V24.0155Z" fill="white"/>
+                <path d="M9.24609 15.9194V30.2251C9.24811 31.056 9.57937 31.8522 10.1673 32.4392C10.7553 33.0263 11.5519 33.3564 12.3828 33.3571H27.8481C28.6775 33.3558 29.4724 33.0251 30.058 32.4378C30.6437 31.8505 30.972 31.0545 30.9708 30.2251V6.5723C30.9717 6.40046 30.9386 6.23015 30.8735 6.07112C30.8084 5.91208 30.7126 5.76746 30.5915 5.64553C30.4704 5.5236 30.3264 5.42676 30.1679 5.36057C30.0093 5.29437 29.8392 5.26012 29.6674 5.25977H20.2284C19.5047 5.25977 18.9498 5.84858 18.9498 6.5723V8.93762C18.9427 9.07704 18.8829 9.20854 18.7825 9.30551C18.682 9.40248 18.5485 9.45766 18.4089 9.45989H15.8721C15.5325 9.4563 15.2049 9.58595 14.9597 9.82102L9.64988 14.978C9.52296 15.0999 9.42182 15.246 9.35246 15.4077C9.28309 15.5694 9.24692 15.7434 9.24609 15.9194ZM20.6154 7.84588C20.6189 7.46754 20.7712 7.10577 21.0392 6.8387C21.3072 6.57162 21.6695 6.42067 22.0478 6.41842H27.8483C27.9146 6.41769 27.9803 6.43009 28.0417 6.45491C28.1031 6.47972 28.159 6.51645 28.2061 6.56299C28.2533 6.60952 28.2907 6.66493 28.3163 6.72601C28.3419 6.7871 28.3551 6.85265 28.3553 6.91889C28.354 7.80484 28.0011 8.65405 27.374 9.27988C26.7469 9.90572 25.897 10.257 25.011 10.2565H21.1382C20.8583 10.2565 20.6155 10.0533 20.6155 9.77337L20.6154 7.84588ZM12.5786 15.4283C12.5312 15.381 12.4937 15.3249 12.4681 15.263C12.4426 15.2012 12.4295 15.135 12.4296 15.0681C12.4298 15.0012 12.4432 14.935 12.4691 14.8733C12.495 14.8116 12.5328 14.7556 12.5804 14.7086C12.628 14.6616 12.6844 14.6245 12.7465 14.5994C12.8085 14.5743 12.8748 14.5618 12.9417 14.5624C13.0086 14.5631 13.0747 14.577 13.1362 14.6034C13.1977 14.6297 13.2534 14.668 13.3 14.716L15.9754 17.4256H24.2434L26.9553 14.7137C27.0024 14.6666 27.0583 14.6292 27.1198 14.6038C27.1813 14.5783 27.2472 14.5652 27.3138 14.5652C27.3803 14.5652 27.4463 14.5783 27.5078 14.6038C27.5693 14.6292 27.6252 14.6666 27.6722 14.7137C27.7193 14.7607 27.7566 14.8166 27.7821 14.8781C27.8076 14.9396 27.8207 15.0055 27.8207 15.0721C27.8207 15.1387 27.8076 15.2046 27.7821 15.2661C27.7566 15.3276 27.7193 15.3835 27.6722 15.4306L24.9603 18.1425V26.4106L27.67 29.086C27.718 29.1326 27.7562 29.1883 27.7826 29.2497C27.8089 29.3112 27.8228 29.3773 27.8235 29.4442C27.8242 29.5111 27.8116 29.5775 27.7865 29.6395C27.7615 29.7015 27.7243 29.758 27.6773 29.8056C27.6303 29.8532 27.5744 29.891 27.5127 29.9169C27.451 29.9427 27.3848 29.9561 27.3179 29.9563C27.251 29.9565 27.1847 29.9434 27.1229 29.9178C27.0611 29.8923 27.0049 29.8547 26.9577 29.8074L24.2454 27.1294H15.9735L13.2978 29.8051C13.2027 29.9002 13.0737 29.9536 12.9393 29.9536C12.8049 29.9536 12.6759 29.9002 12.5808 29.8051C12.4858 29.7101 12.4324 29.5811 12.4324 29.4467C12.4324 29.3122 12.4858 29.1833 12.5808 29.0882L15.2566 26.4124V18.1406L12.5786 15.4283Z" fill="white"/>
+                <path d="M27.2854 7.43164H22.0475C21.938 7.4336 21.8334 7.47766 21.7554 7.55467C21.6775 7.63169 21.6322 7.73575 21.6289 7.84528V9.24204H25.0107C26.1215 9.24204 27.0533 8.51788 27.2854 7.43164Z" fill="white"/>
+            </svg>
+    </div>	
+    <div id="kick_player" class="modalDialog" style="display: none;">
+        <div class="modalHeader">Отключение от сервера</div>
+        <input type="text" class="inputModal" placeholder="Введите причину отключения">
+        <div class="buttons">
+            <div onclick="kick();" class="btn red" style="margin-right: 2px;">Кикнуть</div>
+            <div onclick="modal_close();" class="btn">Отмена</div>
+        </div>
+    </div>    
+    <div id="ban_player" class="modalDialog" style="display: none;">
+        <div class="modalHeader">Блокировка аккаунта</div>
+        <input type="text" class="inputModal" placeholder="Введите количество дней">
+        <input type="text" class="inputModal" placeholder="Введите причину блокировки">
+        <div class="buttons">
+            <div onclick="ban();" class="btn red" style="margin-right: 2px;">Забанить</div>
+            <div onclick="modal_close();" class="btn">Отмена</div>
+        </div>
+    </div>        
+    <div id="warn_player" class="modalDialog" style="display: none;">
+        <div class="modalHeader">Выдача предупреждения</div>
+        <input type="text" class="inputModal" placeholder="Введите причину">
+        <div class="buttons">
+            <div onclick="warn();" class="btn red" style="margin-right: 2px;">Заварнить</div>
+            <div onclick="modal_close();" class="btn">Отмена</div>
+        </div>
+    </div>     
+    <div id="ticket_player" class="modalDialog" style="display: none;">
+        <div class="modalHeader">Выдача штрафа</div>
+        <input type="text" class="inputModal" placeholder="Введите сумму">
+        <input type="text" class="inputModal" placeholder="Введите причину">
+        <div class="buttons">
+            <div onclick="warn();" class="btn red" style="margin-right: 2px;">Выдать</div>
+            <div onclick="modal_close();" class="btn">Отмена</div>
+        </div>
+    </div>       
+    <div id="spec" style="display: none;">
+        <div id="info_click">
+            <div class="infoblock">
+                <img src="img/warning.png" alt="" width="25px" class="img_info">          
+                <div class="info_text">Показать или скрыть курсор мыши нажмите клавишу Space</div>     
+            </div>    
+        </div>
+        <div class="spec_left">
+            <div class="plName">Меню слежки</div>
+            <div class="select" onclick="spec_event(1);">Подкинуть игрока</div>
+            <div class="select" onclick="spec_event(2);">Отключить от сервера</div>
+            <div class="select" onclick="spec_event(3);">Заблокировать игрока</div>
+            <div class="select" onclick="spec_event(4);">Посадить в псих. больницу</div>
+            <div class="select" onclick="spec_event(5);">Выдать предупреждение</div>
+            <div class="select" onclick="spec_event(6);">Проверить статистику</div>
+            <div class="select" onclick="spec_event(7);">Инвентарь игрока</div>     
+            <div class="select" onclick="spec_event(8);">Выписать штраф</div>       
+            <div class="columns">
+                <div class="select grey" style="width: 132px; margin-right: 5px;" onclick="spec_event(9);">« Назад</div>
+                <div class="select grey" style="width: 132px;" onclick="spec_event(10);">Далее »</div>
+            </div>        
+            <div class="select red" onclick="spec_event(11);">Выйти из слежки</div>
+        </div>
+        <div class="spec_right">
+            <div id="plName" class="plName">Raymond Corleone [ID: 15]</div>
+            <div class="boxContent">
+                <div class="leftBox">Здоровье</div>
+                <div id="health" class="rightBox">100 HP</div>
+            </div>       
+            <div class="boxContent">
+                <div class="leftBox">Броня</div>
+                <div id="armour" class="rightBox">0 ARM</div>
+            </div>                        
+            <div class="boxContent">
+                <div class="leftBox">Ping</div>
+                <div id="ping" class="rightBox">86 ms</div>
+            </div>     
+            <div class="boxContent">
+                <div class="leftBox">Packet Loss</div>
+                <div id="packet_loss" class="rightBox">0.1</div>
+            </div>                  
+            <div class="boxContent">
+                <div class="leftBox">Фракция</div>
+                <div id="fraction" class="rightBox">УФСБ России</div>
+            </div>
+            <div class="boxContent">
+                <div class="leftBox">Должность</div>
+                <div id="dol" class="rightBox">Начальник отдела</div>
+            </div>        
+            <div class="boxContent">
+                <div class="leftBox">Звание</div>
+                <div id="dols" class="rightBox">Капитан</div>
+            </div>              
+            <div class="boxContent">
+                <div class="leftBox">ФИО</div>
+                <div id="rp_info" class="rightBox">Корлеоне Раймasffонд Владимирович</div> <!-- lenght: 36 symbols -->
+            </div>    
+            <div class="boxContent">
+                <div class="leftBox">Скорость</div>
+                <div id="speed" class="rightBox">15 км/ч</div>
+            </div>    
+            <div class="boxContent">
+                <div class="leftBox">Оружие</div>
+                <div id="weapon" class="rightBox">0 ID</div>
+            </div>                                               
+        </div>
+    </div>    
+    <div class="mainMenu" id="main_menu" style="display: none;">
+        <div class="left_menu">
+            <div class="menuHeader" id="mn_header">Статистика</div>
+            <div id="component_stats" class="playerStats" style="display: none;">
+                <div class="content_menu">
+                    <div class="left_content">Игровой никнейм</div>
+                    <div class="right_content" id="menuName">Raymond_Corleone</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">ФИО</div>
+                    <div class="right_content" id="menuInfo">Корлеоне Раймонд Владимирович</div>
+                </div>            
+                <div class="content_menu">
+                    <div class="left_content">Отыграно часов</div>
+                    <div class="right_content" id="menuHours">69 ч.</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Денег на руках</div>
+                    <div class="right_content" id="menuCash">1 000 000 руб.</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Банковская карта</div>
+                    <div class="right_content" id="menuBank">1 000 руб.</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Фракция</div>
+                    <div class="right_content" id="menuFrac">Отсутствует</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Должность</div>
+                    <div class="right_content" id="menuDol">Нет</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Звание</div>
+                    <div class="right_content" id="menuDols">Нет</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Номер телефона</div>
+                    <div class="right_content" id="menuPhone">913-512</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">Предупреждения</div>
+                    <div class="right_content" id="menuWarns">0 из 3</div>
+                </div>
+                <div class="content_menu red">
+                    <div class="left_content">Дата регистрации</div>
+                    <div class="right_content" id="menuRegDate">12.12.2012</div>
+                </div>                                                                                                            
+            </div>
+            <div id="component_settings" class="menu_settings" style="display: none;">
+                <div class="setting_item">
+                    <div class="setting_name">Спидометр</div>
+                    <div class="setting_value" id="speed_state" onclick="change_setting(0);">Показать</div>
+                </div>
+                <div class="setting_item">
+                    <div class="setting_name">Стиль разговора</div>
+                    <div class="setting_value" id="walk_state" onclick="change_setting(1);">Стиль 1</div>
+                </div>     
+                <div class="setting_item">
+                    <div class="setting_name">Фон для СС</div>
+                    <div class="setting_value" id="back_state" onclick="change_setting(2);">Показать</div>
+                </div>               
+                <div class="setting_item">
+                    <div class="setting_name">Игровой худ</div>
+                    <div class="setting_value" id="hud_state" onclick="change_setting(3);">Показать</div>
+                </div>           
+                <div class="menuHeader" id="mn_header" style="margin-top: 15px; font-size: 17px;">Новый пароль</div>                 
+                <div class="info_text" style="margin-bottom: 10px; line-height: 15px; font-family: 'Proxima Nova Sm'; color: rgba(255,255,255,0.5);">
+                    Введите новый пароль для своего аккаунта: <br>
+                    * Минимальная длина пароля 6 символов. <br>
+                    * Минимальная длина пароля 25 символов <br>
+                    * Возможно использовать только буквы и цифры</div> 
+                <input type="text" class="input_password" placeholder="Укажите новый пароль в этой поле">
+                <div class="setting_item change_pass" style="justify-content: center;">
+                    <div class="setting_name white">Изменить пароль</div>
+                </div>                                       
+            </div>
+            <div id="component_info" class="menu_info" style="display: none;">
+                <div class="content_menu">
+                    <div class="left_content">Сайт игрового проекта</div>
+                    <div class="right_content link" id="menuWarns" onclick="copy_link(1);">11region-rp.ru</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content">ВКонтакте</div>
+                    <div class="right_content link" id="menuWarns" onclick="copy_link(2);">vk.com/11region_roleplay</div>
+                </div>        
+                <div class="content_menu">
+                    <div class="left_content">Telegram</div>
+                    <div class="right_content link" id="menuWarns" onclick="copy_link(3);">t.me/region11_roleplay</div>
+                </div>  
+                <div class="content_menu">
+                    <div class="left_content">Discord</div>
+                    <div class="right_content link" id="menuWarns" onclick="copy_link(4);">discord.gg/bsCemtBV3H</div>
+                </div>        
+                <div class="content_menu">
+                    <div class="left_content">TeamSpeak</div>
+                    <div class="right_content link" id="menuWarns" onclick="copy_link(5);">ts3server://11regionproject.t-s-3.ru</div>
+                </div>              
+                
+                <div class="infoblock">
+                    <img src="img/warning.png" alt="" width="25px" class="img_info">          
+                    <div class="info_text">Нажмите на ссылку, чтобы скопировать её</div>     
+                </div>                            
+
+            </div>
+            <div id="component_report" class="menu_report" style="display: none;">
+                <div class="info_text" style="margin-bottom: 10px; line-height: 15px; font-family: 'Proxima Nova Sm'; color: rgba(255,255,255,0.5);">
+                    Вы собираетесь написать <span style="font-family: 'Proxima Nova Ex'; color: #5096f1;">администрации сервера</span> <br>
+                    Перед тем как отправить сообщение убедитесь, что ни один из пунктов <br>
+                    помощи не дал Вам ответа на Ваш вопрос <br><br>
+                    <span style="font-family: 'Proxima Nova Ex'; color: #da4447;">Запрещается:</span><br>
+                    – флуд, сквернословие, оффтоп<br>
+                    – Выпрашивание игровых ценностей (дать денег, дать лидерку, дать права)<br>
+                    – ложные сообщения о нарушении <br><br>
+                    <span style="font-family: 'Proxima Nova Ex'; color: #da4447;">За нарушение правил последуют наказания:</span><br>
+                    – выдать предупреждение<br>
+                    – отключить от сервера<br>
+                    – выдать блокировку чата<br>
+                    – заблокировать аккаунт<br><br>
+                    Правила действуют для всех игроков <span style="font-family: 'Proxima Nova Sm'; color: #fff;">11Region Project</span></div> 
+                <input id="input_report" type="text" class="input_password" placeholder="Введите текст обращения">
+                <div class="report_buttons">
+                    <div class="setting_item change_pass" style="justify-content: center;">
+                        <div class="setting_name white" onclick="interface_menu(2);">Отправить жалобу</div>
+                    </div> 
+                    <div class="setting_item change_pass ask" style="justify-content: center;">
+                        <div class="setting_name white" onclick="interface_menu(3);">Задать вопрос</div>
+                    </div>                     
+                </div>                        
+            </div>
+            <div id="component_help" class="menu_help" style="display: none;">
+                <div class="menuHeader" id="mn_header" style="font-family: Proxima Nova Sm; margin-top: 5px; font-size: 17px; color: rgba(255,255,255,0.8);">Основые команды</div>        
+                <div class="commands_header">
+                    <div class="command_header">команда</div> 
+                    <div class="command_info">краткое описание</div>
+                </div>                 
+                <div class="info_text helpPage" style="margin-bottom: 10px; line-height: 15px; font-family: 'Proxima Nova Sm'; color: rgba(255,255,255,0.5);">                   
+                    <div class="commands">
+                        <div class="command_name">/menu</div> 
+                        <div class="command_info">панель персонажа</div>
+                    </div>
+                    <div class="commands">
+                        <div class="command_name">/gps</div> 
+                        <div class="command_info">навигация по карте</div>
+                    </div>                    
+                    <div class="commands">
+                        <div class="command_name">/pay</div> 
+                        <div class="command_info">передать деньги</div>
+                    </div>
+                    <div class="commands">
+                        <div class="command_name">/pass</div> 
+                        <div class="command_info">показать пасспорт</div>
+                    </div>
+                    <div class="commands">
+                        <div class="command_name">/vu</div> 
+                        <div class="command_info">показать свои права</div>
+                    </div>                    
+                    <div class="commands">
+                        <div class="command_name">/mdo</div> 
+                        <div class="command_info">создать метку</div>
+                    </div>
+                    <div class="commands">
+                        <div class="command_name">/pme</div> 
+                        <div class="command_info">описание к персонажу</div>
+                    </div>
+                    <div class="commands">
+                        <div class="command_name">/report</div> 
+                        <div class="command_info">связь с администрацией</div>
+                    </div>
+                    <div class="commands">
+                        <div class="command_name">/animlist</div> 
+                        <div class="command_info">список анимаций</div>
+                    </div>     
+                    <div class="commands">
+                        <div class="command_name">/mytickets</div> 
+                        <div class="command_info">посмотреть свои штрафы</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/cdo</div> 
+                        <div class="command_info">описание к автомобилю</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/ame</div> 
+                        <div class="command_info">краткое действие</div>
+                    </div>                                        
+                    <div class="commands">
+                        <div class="command_name">/donate</div> 
+                        <div class="command_info">дополнительные услуги</div>
+                    </div>                             
+                    <div class="commands">
+                        <div class="command_name">/vip</div> 
+                        <div class="command_info">панель VIP-привелегий</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/id</div> 
+                        <div class="command_info">поиск игрока по никнейму</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/online</div> 
+                        <div class="command_info">сотрудники фракций онлайн</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/del</div> 
+                        <div class="command_info">выкинуть что-то из рук</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/dice</div> 
+                        <div class="command_info">кинуть кости</div>
+                    </div>       
+                    <div class="commands">
+                        <div class="command_name">/walk</div> 
+                        <div class="command_info">автопоходка</div>
+                    </div>                           
+                    <div class="commands">
+                        <div class="command_name">/rem</div> 
+                        <div class="command_info">ремень безопасности</div>
+                    </div>                           
+                    <div class="commands">
+                        <div class="command_name">/phone</div> 
+                        <div class="command_info">доступ к телефону</div>
+                    </div>                           
+                    <div class="commands">
+                        <div class="command_name">/medshow</div> 
+                        <div class="command_info">показать мед. карту</div>
+                    </div>                           
+                    <div class="commands">
+                        <div class="command_name">/showtrain</div> 
+                        <div class="command_info">документ об образовании</div>
+                    </div>                           
+                    <div class="commands">
+                        <div class="command_name">/attachcar</div> 
+                        <div class="command_info">крепление предметов на авто</div>
+                    </div>                           
+                    <div class="commands">
+                        <div class="command_name">/anim</div> 
+                        <div class="command_info">список анимаций</div>
+                    </div>       
+                </div>                                    
+            </div>           
+            <div id="component_donate" class="menu_donate" style="display: none;">
+                <div class="menuHeader" id="mn_header" style="font-size: 17px; color: rgba(0,0,0,0.5);">Конвертирование валюты</div>             
+                <input type="text" class="input_password" placeholder="Введите количество которое хотите обменять">
+                <div class="setting_item change_pass" style="justify-content: center;">
+                    <div class="setting_name white">Конвертировать</div>
+                </div>             
+                <div class="menuHeader" id="mn_header" style="margin-top: 15px; font-size: 17px; color: rgba(0,0,0,0.5);">Остальные услуги</div>   
+                <div class="donate_item">
+                    <div class="donate_name">Права категории A</div>
+                    <div class="donate_price">100 руб</div>
+                </div>
+                <div class="donate_item">
+                    <div class="donate_name">Права категории B</div>
+                    <div class="donate_price">100 руб</div>
+                </div>
+                <div class="donate_item">
+                    <div class="donate_name">Права категории С</div>
+                    <div class="donate_price">200 руб</div>
+                </div>     
+                <div class="donate_item">
+                    <div class="donate_name">Права категории В</div>
+                    <div class="donate_price">200 руб</div>
+                </div>
+                <div class="donate_item">
+                    <div class="donate_name">Права категории E</div>
+                    <div class="donate_price">100 руб</div>
+                </div>                               
+                <div class="donate_item">
+                    <div class="donate_name">Военный билет</div>
+                    <div class="donate_price">500 руб</div>
+                </div>  
+                
+                <div class="donate_item">
+                    <div class="donate_name">Среднее образование МЧС</div>
+                    <div class="donate_price">500 руб</div>
+                </div>
+                <div class="donate_item">
+                    <div class="donate_name">Высшее экономическое</div>
+                    <div class="donate_price">1000 руб</div>
+                </div>     
+                <div class="donate_item">
+                    <div class="donate_name">Высшее МВД</div>
+                    <div class="donate_price">1500 руб</div>
+                </div>
+                <div class="donate_item">
+                    <div class="donate_name">Высшее военное</div>
+                    <div class="donate_price">1500 руб</div>
+                </div>                               
+                <div class="donate_item">
+                    <div class="donate_name">Высшее [академия ФСБ]</div>
+                    <div class="donate_price">10000 руб</div>
+                </div>                  
+            </div>
+            <div id="component_objects" class="menu_objects" style="display: none;">
+                <div class="content_menu">
+                    <div class="left_content">Слот 1</div>
+                    <div class="left_content">Голова</div>
+                    <div class="left_content">АК-74М</div>
+                </div>
+                <div class="content_menu">
+                    <div class="left_content"></div>
+                    <div class="right_content">Пусто</div>
+                    <div class="left_content"></div>
+                </div>               
+                <div class="content_menu">
+                    <div class="left_content"></div>
+                    <div class="right_content">Пусто</div>
+                    <div class="left_content"></div>
+                </div>                                                                
+            </div>
+            <div id="component_inventory" class="menu_inventory" style="display: none;">
+                <div class="inventory_header">
+                    <div class="inv_h_name">наименование предмета</div> 
+                    <div class="inv_h_value">количество</div>
+                </div>     
+                <div class="inventory_item">
+                    <div class="intentory_name">Шаурма</div>
+                    <div class="inventory_value">3</div>
+                </div>
+            </div>
+            <div id="component_cars" class="menu_cars" style="display: none;">
+                <div class="cars_list">    
+                </div>
+            </div>
+        </div>
+        <div class="right_menu">
+            <div class="menuHeader">Главное меню</div>
+            <div class="content_item" onclick="click_menu(1);">Статистика персонажа</div>   
+            <div class="content_item" onclick="click_menu(2);">Настройки персонажа</div>   
+            <div class="content_item" onclick="click_menu(3);">Наши ресурсы</div>   
+            <div class="content_item" onclick="click_menu(4);">Связь с администрацией</div>   
+            <div class="content_item" onclick="click_menu(5);">Помощь по серверу</div>   
+            <div class="content_item" onclick="click_menu(6);">Дополнительные услуги</div>   
+            <div class="content_item" onclick="click_menu(7);">Прикрепленные предметы</div>
+            <div class="content_item" onclick="click_menu(8);">Инвентарь персонажа</div>      
+            <div class="content_item" onclick="click_menu(9);">Мой транспорт</div>   
+            <div class="content_item close_red" onclick="menu_server_close();">Закрыть</div>   
+        </div>        
+    </div>
+    <div id="fuelBlock" class="fuelBlock" style="display: none;">
+        <div class="fuelHeader">Заправка автомобиля</div>
+        <div class="flex_fuel_types">
+            <div id="fuel_0" class="fuelType active_fuel" onclick="select_fuel(0);">92</div>
+            <div id="fuel_1" class="fuelType" onclick="select_fuel(1);">95</div>
+            <div id="fuel_2" class="fuelType" onclick="select_fuel(2);">98</div>
+            <div id="fuel_3" class="fuelType" onclick="select_fuel(3);">ДТ</div>
+        </div>        
+        <div class="fuelinfo">
+            <div class="fuelValue">
+                <div id="max_fuel" class="green_small">Количество литров (35 л.)</div>
+                <div id="litres" class="white_big">15 литров</div>
+            </div>
+            <div class="fuelPrice">
+                <div class="green_small">Оплата</div>
+                <div id="fuel_price" class="white_big">5000 руб.</div>
+            </div>
+        </div>
+        <input value="1" type="range" id="volume" name="volume" min="0" max="100" onmouseout="this.blur();">
+        <div id="fuelBuy" class="fuelBuy" onclick="buyFuel();">Подвердить</div>
+        <div class="closeFuel" onclick="closeFuel();">Закрыть меню</div>
+    </div>
+    <div id="clothes" class="clothesStyle" style="display: none;">
+        <div id="skin_id" class="clothesName">Одежда №51</div>
+        <div class="clothesInfo">
+            <div class="headerPrice">Стоимость</div>
+            <div id="skin_price" class="clothesPrice">10000 руб</div>
+        </div>
+        <div class="buttons">
+        </div>             
+        <div class="buttons">
+            <div class="selects" onclick="clothes_event(1);">«</div>
+            <div class="buttonBuy" onclick="clothes_event(2);">Приобрести</div>
+            <div class="closeBuy" onclick="clothes_event(3);">Закрыть</div>
+            <div class="selects" onclick="clothes_event(4);">»</div>            
+        </div>   
+    </div>    
+    <script>
+        let x;
+        let is_spec_show = 0;
+        let is_focus = 1;
+
+        window.addEventListener("keyup", (event) => {
+            var code = event.keyCode;
+            var key = String.fromCharCode(event.keyCode);
+            
+            if(event.keyCode == 32) {
+                if(is_spec_show === 1) {
+                    if(is_focus === 0) {
+                        is_focus = 1;
+                        cef.set_focus(true);
+                    }
+                    else {
+                        is_focus = 0;
+                        cef.set_focus(false);
+                    }
+                }
+            }
+        });      
+
+        cef.emit("game:hud:setComponentVisible", "interface", false);
+        cef.emit("game:data:pollPlayerStats", true, 50);
+        cef.on("game:data:playerStats", (hp, max_hp, arm, breath, wanted, weapon, ammo, max_ammo, money, speed) => {
+            x = Math.round(speed);
+            document.getElementById("speedValue").innerHTML = `${x}`;
+
+            let speednahui = 838 + speed * 3;
+            document.getElementById("etoSpeed").style = `stroke-dasharray: 838;stroke-dashoffset: -${speednahui};`;
+
+            document.getElementById("armour_progress").value = `${arm}`;
+            document.getElementById("hp_progress").value = `${hp}`; 
+            
+            document.getElementById("weapon").style.backgroundImage = `url(img/${weapon}.png)`;
+
+            if(weapon === 24 || weapon === 29 || weapon === 30) {
+                document.getElementById("ammoValue").innerHTML = `${max_ammo} пт`;
+                document.getElementById("ammoValue").style = `display: block;`;
+            } 
+            else {
+                document.getElementById("ammoValue").innerHTML = ``;
+                document.getElementById("ammoValue").style = `display: none;`;
+            }
+
+        });
+        
+        cef.on("update_money", (value0, value1, value2) => {
+            let mon = (value0).toLocaleString('ru');
+            let banh = (value1).toLocaleString('ru');
+            document.getElementById("money").innerHTML = `${mon}`;
+            document.getElementById("bank").innerHTML = `${banh}`;
+            document.getElementById("need_progress").value = `${value2}`;
+        });
+
+        cef.on("show_hud", () => {
+            document.getElementById("hud").style = "display: block;";
+        });
+        cef.on("hide_hud", () => {
+            document.getElementById("hud").style = "display: none;";
+        });
+        
+        cef.on("content_hud_show", () => {
+            document.getElementById("visible_content_hud").style = "display: block;";
+        });
+        cef.on("content_hud_hide", () => {
+            document.getElementById("visible_content_hud").style = "display: none;";
+        });        
+
+        cef.on("show_spedometr", () => {
+            document.getElementById("spedometr").style = "display: block;";
+        });
+        cef.on("hide_spedometr", () => {
+            document.getElementById("spedometr").style = "display: none;";
+        });
+        cef.on("speed_update", (type, value) => {
+            if(type == 1) {
+                if(value == 0) {
+                    document.getElementById("icon1").style = "fill: #fff;";
+                }
+                if(value == 1) {
+                    document.getElementById("icon1").style = "fill: #66cc00;";
+                }
+            }
+            if(type == 2) {
+                if(value == 0) {
+                    document.getElementById("icon2").style = "fill: #fff;";
+                }
+                if(value == 1) {
+                    document.getElementById("icon2").style = "fill: #66cc00;";
+                }
+            }
+            if(type == 3) {
+                if(value == 0) {
+                    document.getElementById("icon3").style = "fill: #fff;";
+                }
+                if(value == 1) {
+                    document.getElementById("icon3").style = "fill: #66cc00;";
+                }
+            }
+            if(type == 4) {
+                let fuel;
+                fuel = 340 + value * 3.35;
+                document.getElementById("etoFuel").style = `stroke-dasharray: 340;stroke-dashoffset: ${fuel};`;
+            }
+        });
+        function spec_event(eventId) {
+            modal_close();
+            if(eventId === 2) {
+                document.getElementById("kick_player").style = "display: block;";
+                return ;
+            }
+            if(eventId === 3) {
+                document.getElementById("ban_player").style = "display: block;";
+                return ;
+            }            
+            if(eventId === 5) {
+                document.getElementById("warn_player").style = "display: block;";
+                return ;                
+            }
+            if(eventId === 8) {
+                document.getElementById("ticket_player").style = "display: block;";
+                return ;                
+            }
+            cef.emit("spec_callback", eventId);
+        }
+        function kick() {
+            document.getElementById("kick_player").style = "display: none;";
+            return ;
+        }
+        function modal_close() {
+            document.getElementById("kick_player").style = "display: none;";
+            document.getElementById("ban_player").style = "display: none;";
+            document.getElementById("warn_player").style = "display: none;";
+            document.getElementById("ticket_player").style = "display: none;";
+
+            return ;
+        }
+        cef.on("show_spectable", () => {
+            document.getElementById("spec").style = "display: block;";
+            cef.set_focus(true);
+            is_spec_show = 1;
+        });
+        cef.on("hide_spectable", () => {
+            document.getElementById("spec").style = "display: none;";
+            cef.set_focus(false);
+            is_spec_show = 0;
+        });   
+        cef.on("update_spectable", (specId, specName, health, armour, ping, packetLoss, fraction, dol, dols, rpInfo, speed, weapon) => {
+            document.getElementById("plName").innerHTML = `${specName} [ID: ${specId}]`;
+            document.getElementById("health").innerHTML = `${health} HP`;
+            document.getElementById("armour").innerHTML = `${armour} ARM`;
+            document.getElementById("ping").innerHTML = `${ping} ms`;
+            document.getElementById("packet_loss").innerHTML = `${packetLoss}`;
+            document.getElementById("fraction").innerHTML = `${fraction}`;
+            document.getElementById("dol").innerHTML = `${dol}`;
+            document.getElementById("dols").innerHTML = `${dols}`;
+            document.getElementById("rp_info").innerHTML = `${rpInfo}`;
+            document.getElementById("speed").innerHTML = `${speed}`;
+            document.getElementById("weapon").innerHTML = `${weapon}`;
+        });        
+    </script>
+    <script src="js/carfuel.js"></script>
+    <script src="js/clothes.js"></script>
+</body>
+</html>

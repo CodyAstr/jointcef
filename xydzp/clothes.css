@@ -1,0 +1,112 @@
+body {
+    /* background: url(back.png); */
+    background-repeat: no-repeat;
+    background-position: cover;
+    overflow-y: hidden;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clothesStyle {
+    position: absolute;
+    font-family: 'Proxima Nova Sm';
+    background: linear-gradient(to top,#131111dd,#43225edd);
+    width: 25vw;
+    padding: 18px 30px;
+    color: #fff;
+    display: flex;
+    left: 37.5%;
+    bottom: 2vw;
+
+    user-select: none;
+}
+
+.clothesName {
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    color: rgba(255, 255, 255, 0.95);
+    text-align: center;
+    font-family: Proxima Nova Rg;
+}
+
+.clothesInfo {
+    margin-top: 15px;
+    font-family: Proxima Nova Rg;
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 1px 1px 10px rgba(255, 255, 255, 0.06);
+}
+
+.headerPrice {
+    text-transform: uppercase;
+    font-size: 15px;
+    color: rgb(255, 255, 255, 0.85);
+    letter-spacing: 3px;
+}
+
+.clothesPrice {
+    font-family: 'Proxima Nova Sm';
+    text-transform: uppercase;
+    font-size: 15px;
+    color: rgba(101, 219, 107, 1);
+    letter-spacing: 3px;  
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.buttonBuy {
+    background: linear-gradient(45deg,#696effdd,#6a90f7dd);
+    padding: 9px;
+    margin-left: 5px;
+    width: 100%;
+    transition: .3s;
+    border: 1px solid #ffffff00;
+}
+
+.buttonBuy:hover {
+    background: linear-gradient(45deg,#696eff,#6a90f7);
+}
+
+.closeBuy {
+    background: #e7372785;
+    padding: 9px;
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 100%;
+    transition: .3s;
+    border: 1px solid #ffffff00;
+}
+
+.closeBuy:hover {
+    background: #e73727ad;
+}
+
+.selects {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 9px;
+    width: 15%;
+    font-family: Proxima Nova Rg;
+
+    transition: .2s;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.selects:hover {
+    color: #252525;
+    background-color: rgba(255, 255, 255, 0.8);
+}
