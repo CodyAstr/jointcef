@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удостоверение</title>
+    <style>
+        /* Делаем фон прозрачным, чтобы видеть игру */
+        body {
+            background-color: transparent;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            user-select: none;
+        }
+
+        /* Главный бланк удостоверения (изначально скрыт) */
+        #ud-card {
+            display: none; 
+            width: 450px;
+            background: linear-gradient(135deg, #2b2e38 0%, #15181f 100%);
+            border: 2px solid #ffaa00;
+            border-radius: 10px;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.6);
+        }
+
+        .header {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #ffaa00;
+            border-bottom: 1px solid #3a3f4d;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .line {
+            font-size: 16px;
+            margin: 8px 0;
+        }
+
+        .label { color: #a0a5b5; }
+        .value { font-weight: bold; color: #ffffff; }
+
+        /* Кнопка закрытия */
+        .btn-close {
+            display: block;
+            width: 100%;
+            background-color: #ffaa00;
+            color: #000;
+            border: none;
+            padding: 8px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ud-card">
+        <div class="header" id="u-frak">ЗАГРУЗКА...</div>
+        <div class="line"><span class="label">Сотрудник:</span> <span class="value" id="u-name">-</span></div>
+        <div class="line"><span class="label">Звание:</span> <span class="value" id="u-rank">-</span></div>
+        <div class="line"><span class="label">Должность:</span> <span class="value" id="u-job">-</span></div>
+        
+        <button class="btn-close" onclick="closeUd()">Закрыть</button>
+    </div>
+
+    <script src="cef://api/cef.js"></script>
+
+    <script>
+        // Ждем загрузки страницы
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof cef !== "undefined") {
+                
+                // ЛОВИМ СОБЫТИЕ "open_my_ud" ОТ СЕРВЕРА
+                cef.on("open_my_ud", (data) => {
+                    // Раскладываем принятый массив данных по полочкам:
+                    document.getElementById("u-frak").innerText = data[0];
+                    document.getElementById("u-name").innerText = data[1];
+                    document.getElementById("u-rank").innerText = data[2];
+                    document.getElementById("u-job").innerText = data[3];
+
+                    // Показываем карту на экране
+                    document.getElementById("ud-card").style.display = "block";
+                });
+            }
+        });
+
+        // Функция при нажатии на кнопку "Закрыть"
+        function closeUd() {
+            document.getElementById("ud-card").style.display = "none";
+            
+            // Отправляем сигнал обратно на сервер, что мы закрылись
+            if (typeof cef !== "undefined") {
+                cef.emit("server_close_ud");
+            }
+        }
+    </script>
+</body>
+</html>
