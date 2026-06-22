@@ -1,0 +1,186 @@
+.speedo {
+    position: absolute;
+    right: 30px;
+    bottom: 26px;
+    width: 286px;
+    padding: 14px 18px 14px;
+    background: rgba(17, 20, 27, .58);
+    border-radius: 22px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, .38);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity .25s ease, transform .25s ease;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+.speedo.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sp-cluster {
+    position: relative;
+    width: 250px;
+    height: 176px;
+    margin: 0 auto;
+}
+.sp-gauge {
+    position: absolute;
+}
+.sp-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+.sp-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sp-center b {
+    color: #f4f6f9;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -1px;
+    font-variant-numeric: tabular-nums;
+}
+.sp-center .sp-unit {
+    color: #99a1ae;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.sp-speed {
+    left: 74px;
+    top: 0;
+    width: 176px;
+    height: 176px;
+}
+.sp-speed .sp-track,
+.sp-speed .sp-arc {
+    fill: none;
+    stroke-width: 4.5;
+    stroke-linecap: round;
+    stroke-dasharray: 234.57 402.12;
+    transform: rotate(225deg);
+    transform-origin: center;
+    transform-box: fill-box;
+}
+.sp-speed .sp-track { stroke: #1b1f27; stroke-dashoffset: 0; }
+.sp-speed .sp-arc  { stroke: #4f9bf5; stroke-dashoffset: 234.57; transition: stroke-dashoffset .14s linear, stroke .3s ease; }
+.sp-ticks .tk { stroke: #353c47; stroke-width: 1.8; stroke-linecap: round; }
+.sp-ticks .tk.major { stroke: #6b7380; stroke-width: 2.4; }
+.sp-needle { fill: #4f9bf5; transition: fill .3s ease; }
+.sp-hub  { fill: #232a34; }
+.sp-hub2 { fill: #4f9bf5; }
+.sp-speed .sp-center { padding-bottom: 2px; }
+.sp-speed .sp-center b { font-size: 34px; }
+.sp-speed .sp-center .sp-unit { margin-top: 4px; font-size: 12.5px; letter-spacing: 2px; }
+
+.sp-fuel-g {
+    left: 0;
+    top: 52px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+}
+.sp-fuel-g .sp-svg { transform: rotate(-90deg); }
+.sp-knockout { fill: #12151c; }
+.sp-fuel-g .sp-track,
+.sp-fuel-g .sp-arc {
+    fill: none;
+    stroke-width: 5.5;
+    stroke-linecap: round;
+}
+.sp-fuel-g .sp-track { stroke: #1b1f27; }
+.sp-fuel-g .sp-arc {
+    stroke: #5bb56a;
+    stroke-dasharray: 251.33;
+    stroke-dashoffset: 251.33;
+    transition: stroke-dashoffset .18s ease, stroke .3s ease;
+}
+.sp-fuel-g .sp-center b { font-size: 27px; }
+.sp-fuel-g .sp-center .sp-unit { margin-top: 2px; font-size: 9.5px; letter-spacing: 1px; }
+.sp-fuel-g .sp-center .sp-ic-c {
+    margin-bottom: 2px;
+    color: #707784;
+    line-height: 0;
+}
+.sp-fuel-g .sp-center .sp-ic-c svg { width: 15px; height: 15px; }
+
+.sp-hp {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.sp-hp .sp-ic {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+    color: #cf5a52;
+}
+.sp-track2 {
+    flex: 1;
+    height: 8px;
+    background: #07090d;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.sp-fill {
+    height: 100%;
+    width: 100%;
+    background: #cf5a52;
+    border-radius: 5px;
+    transition: width .2s ease;
+}
+.sp-num {
+    color: #e7e9ee;
+    font-size: 12.5px;
+    font-weight: 700;
+    min-width: 30px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.sp-indicators {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 11px;
+}
+.sp-ind {
+    width: 37px;
+    height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #13161d;
+    border-radius: 11px;
+    color: #3b414d;
+    transition: color .15s ease, background .15s ease;
+}
+.sp-ind svg { width: 20px; height: 20px; }
+#ind-engine.on { color: #4cbf75; background: #15211a; }
+#ind-lights.on { color: #5aa6f5; background: #141d27; }
+.ind-turn.on {
+    color: #d99a36;
+    animation: spBlink .55s steps(1) infinite;
+}
+@keyframes spBlink {
+    50% { color: #3b414d; }
+}
+
+.sp-mileage {
+    margin-top: 11px;
+    text-align: center;
+    color: #828995;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .4px;
+    font-variant-numeric: tabular-nums;
+}

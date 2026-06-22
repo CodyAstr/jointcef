@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JOINT HUD</title>
+<link rel="stylesheet" href="css/hud.css">
+<link rel="stylesheet" href="css/speedometer.css">
+</head>
+<body>
+
+<div class="hud" id="hud">
+
+    <div class="namebar">
+        <span class="name" id="hud-name">Igor Orlov</span>
+        <span class="id" id="hud-id">67</span>
+    </div>
+
+    <div class="panel">
+        <div class="row">
+            <div class="card timecard">
+                <div class="time">
+                    <b id="hud-time">18:14:38</b>
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#c7ccd4" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 1.9"/></svg>
+                </div>
+                <div class="date">
+                    <span id="hud-date">24.03.24</span>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8a909b" stroke-width="2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="16" rx="2.5"/><path d="M3.5 9.5h17M8 3.2v3.6M16 3.2v3.6"/></svg>
+                </div>
+            </div>
+            <div class="card logocard">
+                <span class="jr"><span class="j">J</span><span class="r">R</span></span>
+                <span class="txt"><span class="joint">JOINT</span><span class="rp">ROLEPLAY</span></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="bar">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#e9ecf1"><path d="M12 2.2l7.5 2.7v6.1c0 4.7-3.2 8.3-7.5 10.8C7.7 19.3 4.5 15.7 4.5 11V4.9L12 2.2z"/><path d="M12 5.4l-4.6 1.7v4c0 2.9 1.9 5.4 4.6 7.1V5.4z" fill="#0f1217"/></svg>
+                <div class="track"><div class="fill fill-blue" id="fill-armor" style="width:100%"></div></div>
+                <span class="val" id="hud-armor">100</span>
+            </div>
+            <div class="bar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="#e9ecf1"><path d="M4 9.5c0-3 3.6-5 8-5s8 2 8 5H4z"/><rect x="3.4" y="11" width="17.2" height="2.6" rx="1.3"/><path d="M4 15.5h16c0 2-1.6 3.5-3.5 3.5h-9C5.6 19 4 17.5 4 15.5z"/></svg>
+                <div class="track"><div class="fill fill-orange" id="fill-food" style="width:100%"></div></div>
+                <span class="val" id="hud-food">100</span>
+            </div>
+        </div>
+
+        <div class="bar health">
+            <div class="track"><div class="fill fill-red" id="fill-health" style="width:100%"></div></div>
+            <span class="val" id="hud-health">100</span>
+            <svg class="heart" width="23" height="23" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 20.1l-1.4-1.3C6 14.6 3.2 12 3.2 8.7 3.2 6.2 5.2 4.2 7.7 4.2c1.5 0 2.9.7 3.8 1.9.9-1.2 2.3-1.9 3.8-1.9 2.5 0 4.5 2 4.5 4.5 0 3.3-2.8 5.9-7.4 10.2L12 20.1z"/></svg>
+        </div>
+    </div>
+
+    <div class="money">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#36d06a" stroke-width="2" stroke-linejoin="round"><path d="M3 7.5C3 6.1 4.1 5 5.5 5H18a2 2 0 0 1 2 2v1H5.5"/><path d="M3 7.5V17a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-2"/><path d="M20 11h-3.5a2 2 0 0 0 0 4H20a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1z" fill="#36d06a" stroke="none"/></svg>
+        <span class="amount"><span id="hud-money">49 198</span> ₽</span>
+    </div>
+
+</div>
+
+<div class="speedo" id="speedo">
+    <div class="sp-cluster">
+        <div class="sp-gauge sp-speed">
+            <svg class="sp-svg" viewBox="0 0 160 160">
+                <circle class="sp-track" cx="80" cy="80" r="64"/>
+                <circle class="sp-arc" id="arc-speed" cx="80" cy="80" r="64"/>
+                <g class="sp-ticks" id="ticks-speed"></g>
+                <polygon class="sp-needle" id="needle" points="108,77 139,80 108,83" transform="rotate(225 80 80)"/>
+                <circle class="sp-hub" cx="80" cy="80" r="6.5"/>
+                <circle class="sp-hub2" cx="80" cy="80" r="2.6"/>
+            </svg>
+            <div class="sp-center">
+                <b id="sp-speed">0</b>
+                <span class="sp-unit">км/ч</span>
+            </div>
+        </div>
+
+        <div class="sp-gauge sp-fuel-g">
+            <svg class="sp-svg" viewBox="0 0 104 104">
+                <circle class="sp-knockout" cx="52" cy="52" r="51"/>
+                <circle class="sp-track" cx="52" cy="52" r="40"/>
+                <circle class="sp-arc fuel" id="arc-fuel" cx="52" cy="52" r="40"/>
+            </svg>
+            <div class="sp-center">
+                <span class="sp-ic-c">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V5.5A2.5 2.5 0 0 1 7.5 3h4A2.5 2.5 0 0 1 14 5.5V21"/><path d="M4 21h11"/><path d="M5 11.5h9"/><path d="M14 8h2.5A2.5 2.5 0 0 1 19 10.5V16a1.5 1.5 0 0 0 3 0V9.2l-2.6-2.6"/></svg>
+                </span>
+                <b id="sp-fuelp">100</b>
+                <span class="sp-unit">бензин</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="sp-hp">
+        <svg class="sp-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6z"/></svg>
+        <div class="sp-track2"><div class="sp-fill" id="hp-fill" style="width:100%"></div></div>
+        <span class="sp-num" id="hp-val">100</span>
+    </div>
+
+    <div class="sp-indicators">
+        <div class="sp-ind ind-turn" id="ind-left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+        </div>
+        <div class="sp-ind" id="ind-engine">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.43 12.98c.04-.32.07-.65.07-.98s-.03-.66-.07-.98l2.11-1.65a.5.5 0 0 0 .12-.64l-2-3.46a.5.5 0 0 0-.61-.22l-2.49 1a7.3 7.3 0 0 0-1.69-.98l-.38-2.65A.49.49 0 0 0 13.5 2h-4a.49.49 0 0 0-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1a.5.5 0 0 0-.61.22l-2 3.46a.5.5 0 0 0 .12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65a.5.5 0 0 0-.12.64l2 3.46c.14.24.42.32.61.22l2.49-1c.52.39 1.08.73 1.69.98l.38 2.65c.05.24.25.42.49.42h4c.24 0 .45-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.19.1.47.02.61-.22l2-3.46a.5.5 0 0 0-.12-.64l-2.11-1.65zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+        </div>
+        <div class="sp-ind" id="ind-lights">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h6a7 7 0 0 1 0 14H3z"/><path d="M14 8h4M14 12h6M14 16h4"/></svg>
+        </div>
+        <div class="sp-ind ind-turn" id="ind-right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </div>
+    </div>
+
+    <div class="sp-mileage"><span id="sp-mileage">0.0</span> км</div>
+</div>
+
+<script src="js/hud.js"></script>
+<script src="js/speedometer.js"></script>
+</body>
+</html>
